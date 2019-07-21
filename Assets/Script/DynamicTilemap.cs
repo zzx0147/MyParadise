@@ -13,7 +13,7 @@ public class DynamicTilemap : MonoBehaviour
         Tilemap tilemap = GetComponent<Tilemap>();
         tilemap.SetTile(new Vector3Int(0, 0, 0), temp);
         tilemap.SetTile(new Vector3Int(1, 0, 0), temp);
-        tilemap.SetTile(new Vector3Int(1, 1, 0), temp);
+        tilemap.SetTile(new Vector3Int(1, 1, 0), temp); 
 
     }
 
