@@ -50,7 +50,7 @@ public class DynamicTileManager : MonoBehaviour
             {
                 case TileType.FLOOR :
                     break;
-
+                
             }
 
 
@@ -84,8 +84,6 @@ public class DynamicTileManager : MonoBehaviour
                     FurnitureTilemap.SetTile(CellPosition, RWall);
                 }
             }
-
-            
 
 
         }
