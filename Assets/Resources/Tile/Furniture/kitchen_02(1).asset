@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: kitchen_02(1)
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: c5cd3e5f7d7e72748b06a92bde3f60b5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8be1855d69c4a7b418ad50b152059de2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
