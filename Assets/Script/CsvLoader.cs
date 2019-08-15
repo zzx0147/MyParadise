@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CsvLoader : MonoBehaviour
+public class CsvLoader
 {
 
     public static string[] LoadCsvByArray(string path)

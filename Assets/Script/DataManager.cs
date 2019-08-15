@@ -4,33 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class DataManager : MonoBehaviour
+public class DataManager : MonoSingleton<DataManager>
 {
-    private static DataManager _instance;
-    public static DataManager Instance
-    {
-        get
-        {
-            if (!_instance)
-            {
-                _instance = (GameObject.FindObjectOfType(typeof(DataManager)) as DataManager);
-                if (!_instance)
-                {
-                    GameObject container = new GameObject();
-                    container.name = "MyClassContainer";
-                    _instance = container.AddComponent(typeof(DataManager)) as DataManager;
-                }
-            }
-
-            return _instance;
-        }
-    }
-
     public Text CashText;
     public Text HeartText;
     private int cash;
     private int heart;
-    public List<FunitureItem> Inventory = new List<FunitureItem>();
+    public List<FurnitureItem> Inventory = new List<FurnitureItem>();
 
     public int Cash
     {
@@ -46,7 +26,6 @@ public class DataManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _instance = this;
         Cash = PlayerPrefs.GetInt("Cash", 0);
         Heart = PlayerPrefs.GetInt("Heart", 0);
     }

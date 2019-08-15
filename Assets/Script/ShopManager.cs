@@ -42,10 +42,11 @@ public class ShopManager : MonoBehaviour
 
             if(int.TryParse(result[i,6],out int s))
             {
-                Sprite sprite;
                 if(Resources.Load("Tile/Furniture/"+result[i,2]) is Tile)
                 {
-                    go.GetComponent<ShopElement>().SetElement(result[i,1], s,result[i,0] ,(Resources.Load("Tile/Furniture/" + result[i, 2]) as Tile).sprite);
+                    go.GetComponent<ShopElement>().SetElement(result[i, 1], s, result[i, 0],
+                    (Resources.Load("Tile/Furniture/" + result[i, 2]) as Tile),
+                    (Resources.Load("Tile/Furniture/" + result[i, 3]) as Tile));
                     Debug.Log("Yes");
                 }
                 else

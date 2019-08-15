@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
-public class DynamicTileManager : MonoBehaviour
+public class DynamicTileManager : MonoSingleton<DynamicTileManager>
 {
     public enum TileType
     {
@@ -23,49 +23,58 @@ public class DynamicTileManager : MonoBehaviour
     public TileBase Floor,RWall,LWall;
     public Grid ClickGrid;
     public Camera MainCamera;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            // save the camera as public field if you using not the main camera
-            Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
-            // get the collision point of the ray with the z = 0 plane
-            Vector3 worldPoint = ray.GetPoint(-ray.origin.z / ray.direction.z);
-            Vector3Int CellPosition;
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    // save the camera as public field if you using not the main camera
+        //    Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
+        //    // get the collision point of the ray with the z = 0 plane
+        //    Vector3 worldPoint = ray.GetPoint(-ray.origin.z / ray.direction.z);
+        //    Vector3Int CellPosition;
 
-            switch(CheckTileTypeAndPosition(worldPoint,out CellPosition))
-            {
-                case TileType.FLOOR:
-                    FurnitureTilemap.SetTile(CellPosition, Floor);
-                    break;
-                case TileType.LWALL:
-                        FurnitureTilemap.SetTile(CellPosition, LWall);
-                    break;
+        //    switch(CheckTileTypeAndPosition(worldPoint,out CellPosition))
+        //    {
+        //        case TileType.FLOOR:
+        //            FurnitureTilemap.SetTile(CellPosition, Floor);
+        //            break;
+        //        case TileType.LWALL:
+        //                FurnitureTilemap.SetTile(CellPosition, LWall);
+        //            break;
 
-                case TileType.RWALL:
-                        FurnitureTilemap.SetTile(CellPosition, RWall);
-                    break;
-            }
-        }
+        //        case TileType.RWALL:
+        //                FurnitureTilemap.SetTile(CellPosition, RWall);
+        //            break;
+        //    }
+        //}
     }
 
+    public bool PutTile(FurnitureItem item,int spriteSelect)
+    {
+        Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
+        // get the collision point of the ray with the z = 0 plane
+        Vector3 worldPoint = ray.GetPoint(-ray.origin.z / ray.direction.z);
+        Vector3Int CellPosition;
 
+        switch (CheckTileTypeAndPosition(worldPoint, out CellPosition))
+        {
+            case TileType.FLOOR:
+                FurnitureTilemap.SetTile(CellPosition, item.Tile[spriteSelect]);
+                break;
+            case TileType.LWALL:
+                FurnitureTilemap.SetTile(CellPosition, item.Tile[spriteSelect]);
+                break;
+            case TileType.RWALL:
+                FurnitureTilemap.SetTile(CellPosition, item.Tile[spriteSelect]);
+                break;
+        }
+        return true;
+    }
 
-
-
-
-
-
-
-    public TileType CheckTileTypeAndPosition(Vector3 worldPoint, out Vector3Int CellPosition)
+    private TileType CheckTileTypeAndPosition(Vector3 worldPoint, out Vector3Int CellPosition)
     {
         CellPosition = ClickGrid.WorldToCell(worldPoint);
         Vector3 CellCenterWorldPosition = ClickGrid.GetCellCenterWorld(CellPosition);

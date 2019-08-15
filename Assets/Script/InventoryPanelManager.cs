@@ -54,7 +54,7 @@ public class InventoryPanelManager : MonoBehaviour
 
             GameObject go = Instantiate(inventoryElementPrefeb, scrollRects[select].content);
             go.GetComponent<RectTransform>().anchoredPosition = new Vector2(Gap * elementCnt[select], go.GetComponent<RectTransform>().anchoredPosition.y);
-            go.GetComponent<InventoryElement>().SetElement(v);
+            go.GetComponent<InventoryElement>().SetElement(v,gameObject);
             ++elementCnt[select];
         }
 
@@ -64,9 +64,4 @@ public class InventoryPanelManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -5,12 +5,21 @@ using UnityEngine.UI;
 
 public class InventoryElement : MonoBehaviour
 {
-    private FunitureItem item;
+    private FurnitureItem item;
     public Image thumnail;
+    private GameObject panel;
 
-    public void SetElement(FunitureItem item)
+    public void SetElement(FurnitureItem item, GameObject panel)
     {
         this.item = item;
-        thumnail.sprite = item.sprite[0];
+        thumnail.sprite = item.Tile[0].sprite;
+        this.panel = panel;
+    }
+
+
+    public void UseItem()
+    {
+        FurnitureArrangementManager.Instance.ArrangementStart(item);
+        panel.SetActive(false);
     }
 }
