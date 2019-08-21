@@ -33,7 +33,7 @@ public class CsvLoader
 
             for (int j = 0; j < TempStringArray.Length; ++j)
             {
-                LoadedCsvBy2DementionArray[i, j] = TempStringArray[j];
+                LoadedCsvBy2DementionArray[i, j] = TempStringArray[j].Trim();
             }
 
         }

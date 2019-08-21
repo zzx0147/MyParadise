@@ -28,26 +28,25 @@ public class InventoryPanelManager : MonoBehaviour
                     Destroy(t[k].gameObject);
                 }
             }
-            
         }
 
         int[] elementCnt = { 0, 0, 0, 0 };
         foreach (var v in DataManager.Instance.Inventory)
         {
             int select = 0;
-            if (v.itemCategory == "거실")
+            if (v.Theme == FurnitureItem.ItemTheme.LIVINGROOM)
             {
                 select = 0;
             }
-            else if (v.itemCategory == "주방")
+            else if (v.Theme == FurnitureItem.ItemTheme.KITCHEN)
             {
                 select = 1;
             }
-            else if (v.itemCategory == "침실")
+            else if (v.Theme == FurnitureItem.ItemTheme.BEDROOM)
             {
                 select = 2;
             }
-            else if (v.itemCategory == "욕실")
+            else if (v.Theme == FurnitureItem.ItemTheme.BATHROOM)
             {
                 select = 3;
             }

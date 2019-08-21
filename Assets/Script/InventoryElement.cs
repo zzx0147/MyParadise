@@ -12,7 +12,7 @@ public class InventoryElement : MonoBehaviour
     public void SetElement(FurnitureItem item, GameObject panel)
     {
         this.item = item;
-        thumnail.sprite = item.Tile[0].sprite;
+        thumnail.sprite = item.Tiles[0].sprite;
         this.panel = panel;
     }
 
